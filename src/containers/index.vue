@@ -48,6 +48,7 @@ export default {
 .main-container {
   overflow-y: hidden;
   height: 100%;
+  background-color: whitesmoke;
 }
 
 .el-header {
