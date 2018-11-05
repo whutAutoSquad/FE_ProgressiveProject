@@ -1,6 +1,6 @@
 <template>
   <section class="main">
-    <el-card v-for="cnt in 3" :key="cnt" class="i-card" >
+    <el-card v-for="cnt in 3" :key="cnt" shadow="always" class="i-card" >
       <div slot="header">
         2018-11-02 Bug报告
       </div>

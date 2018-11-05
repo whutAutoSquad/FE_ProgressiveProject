@@ -7,7 +7,7 @@
 
     <el-container class='sub-container'>
       <!-- aside -->
-      <el-aside width="260px">
+      <el-aside width="auto">
         <i-aside />
       </el-aside>
 
@@ -48,7 +48,6 @@ export default {
 .main-container {
   overflow-y: hidden;
   height: 100%;
-  background-color: whitesmoke;
 }
 
 .el-header {
@@ -75,6 +74,7 @@ export default {
 
 .sub-container .el-aside {
   border-right: 1px solid lightsteelblue;
+  overflow: hidden;
 }
 
 </style>
