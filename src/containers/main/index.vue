@@ -1,11 +1,11 @@
 <template>
   <section class="main">
-    <el-card v-for="cnt in 3" :key="cnt" shadow="always" class="i-card" >
+    <el-card v-for="item in cardsData" :key="item.title" shadow="always" class="i-card" >
       <div slot="header">
-        2018-11-02 Bug报告
+        {{ item.title }}
       </div>
-      <div v-for="cnt in 4" :key="cnt" class="text item">
-        {{'列表内容 ' + cnt }}
+      <div>
+        {{ item.details }}
       </div>
     </el-card>
   </section>
@@ -13,10 +13,10 @@
 
 <script>
 export default {
-  name: 'iMain',
-  data () {
-    return {
-
+  computed: {
+    cardsData() {
+      console.log(this.$store.state)
+      return this.$store.state.init.cardsData
     }
   }
 }

@@ -4,8 +4,8 @@
     <el-button type="text" plain @click="dialogFormVisible = true" icon="el-icon-plus" ></el-button>
     <divider />
     <el-button type="text" plain @click="toggleAsideMenuCollapse" :icon="this.isCollapse ? 'el-icon-caret-right' : 'el-icon-caret-left' " style="width: 95%"></el-button>
-  	<el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-      <el-submenu index="1">
+  	<el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+      <el-submenu index="1" disabled>
         <template slot="title">
           <i class="el-icon-location"></i>
           <span slot="title">导航一</span>
@@ -31,7 +31,7 @@
         <i class="el-icon-document"></i>
         <span slot="title">导航三</span>
       </el-menu-item>
-      <el-menu-item index="4">
+      <el-menu-item index="4" disabled>
         <i class="el-icon-setting"></i>
         <span slot="title">导航四</span>
       </el-menu-item>
@@ -40,19 +40,16 @@
 
     <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
       <el-form :model="form">
-        <el-form-item label="活动名称" :label-width="formLabelWidth">
-          <el-input v-model="form.name" autocomplete="off"></el-input>
+        <el-form-item label="标题" :label-width="formLabelWidth">
+          <el-input v-model="form.title" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="活动区域" :label-width="formLabelWidth">
-          <el-select v-model="form.region" placeholder="请选择活动区域">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
-          </el-select>
+        <el-form-item label="内容详情" :label-width="formLabelWidth">
+          <el-input v-model="form.details" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+        <el-button type="primary" @click="insertData">确 定</el-button>
       </div>
     </el-dialog>
 
@@ -60,27 +57,22 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   data() {
     return {
       isCollapse: true,
 
       gridData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
+        title: 'This is a title.',
+        details: 'This is the details.'
       }],
       dialogTableVisible: false,
       dialogFormVisible: false,
       form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
+        title: '',
+        details: '',
       },
       formLabelWidth: '120px'
     };
@@ -97,7 +89,13 @@ export default {
     },
     insertItem() {
       console.log('insertItem');
+    },
+    insertData () {
+      this.$store.dispatch('insertData', this.form);
+      this.dialogFormVisible = false;
+      console.log(this.form);
     }
+
   }
 }
 </script>
