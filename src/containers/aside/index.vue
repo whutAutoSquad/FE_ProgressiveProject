@@ -91,7 +91,7 @@ export default {
       console.log('insertItem');
     },
     insertData () {
-      this.$store.dispatch('insertData', this.form);
+      this.$store.dispatch('init/insertData', this.form);
       this.dialogFormVisible = false;
       console.log(this.form);
     }
