@@ -5,6 +5,11 @@
 const path = require('path')
 
 module.exports = {
+  server: {
+    host: 'http://localhost',
+    port: 9001,
+    entirePath: 'http://localhost:9001'
+  },
   dev: {
 
     // Paths

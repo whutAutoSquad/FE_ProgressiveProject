@@ -40,7 +40,10 @@ module.exports = {
   },
   module: {
     rules: [
-      ...(config.dev.useEslint ? [createLintingRule()] : []),
+
+      // 此设置用来提示语法中的警告信息,一般包括 尾部不建议待分号,函数定义时不能少空格之类的,现在注释掉,忽略大部分不影响功能的警告
+      // ...(config.dev.useEslint ? [createLintingRule()] : []),
+      
       {
         test: /\.vue$/,
         loader: 'vue-loader',

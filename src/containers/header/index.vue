@@ -1,7 +1,7 @@
 <template>
   <section class="header">
     <logo />
-    <searchbox />
+    <!-- <searchbox /> -->
     <iMenu />
   </section>
 </template>
@@ -35,6 +35,7 @@ export default {
 }
 
 .header .i-menu {
-  float: left;
+  float: right;
+  margin-right: 30px;
 }
 </style>

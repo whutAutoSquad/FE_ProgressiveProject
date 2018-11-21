@@ -1,30 +1,46 @@
 <template>
   <section class="main">
-    <el-card v-for="item in cardsData" :key="item.title" shadow="always" class="i-card" >
+    <el-card v-for="item in areaData" :key="item.code" shadow="always" class="i-card" >
       <div slot="header">
-        {{ item.title }}
+        {{ item.code }}
       </div>
       <div>
-        {{ item.details }}
+        {{ item.addr }}
       </div>
     </el-card>
   </section>
 </template>
 
 <script>
+import axios from 'axios';
+import { server } from '../../../config';
 export default {
   computed: {
-    cardsData() {
+    areaData() {
       console.log(this.$store.state)
-      return this.$store.state.init.cardsData
+      return this.$store.state.area.areaData
     }
+  },
+  created(){
+    // axios.get(server.entirePath+"?code=120000").then( (res) => {
+    //   console.log("axios.res: ",res)
+    //   let { status, data } = res;
+    //   console.log(status);
+    //   console.log(data);
+    //   if( status == 200 ) {
+    //     this.$store.dispatch({
+    //       type: 'area/getData',
+    //       areaData: data.res
+    //     });
+    //   }
+    // })
   }
 }
 </script>
 
 <style scoped>
 .main {
-    min-height: 900px;
+    min-height: 300px;
 }
 
 .i-card {

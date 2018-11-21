@@ -7,7 +7,7 @@
 
     <el-container class='sub-container'>
       <!-- aside -->
-      <el-aside width="auto">
+      <el-aside width="auto" v-bind:style="{ display: displayAside ? 'block' : 'none' }" >
         <i-aside />
       </el-aside>
 
@@ -15,6 +15,7 @@
         <!-- main -->
         <el-main>
           <i-main />
+          <router-view></router-view>
         </el-main>
 
         <!-- footer -->
@@ -33,14 +34,39 @@ import iHeader from './header'
 import iAside from './aside'
 import iMain from './main'
 import iFooter from './footer'
+
+// 引入 vuex
+import { createNamespacedHelpers } from 'vuex'
+const { mapState, mapActions } = createNamespacedHelpers('init')
+
 export default {
   name: 'container',
+  computed: {
+    ...mapState({
+      displayAside: state => state.displayAside
+    })
+  },
+  methods: {
+    ...mapActions([
+      'toggleDisplayAside'
+    ])
+  },
+  created(){
+    console.log('container built.')
+    var _self = this;
+    document.onkeydown = function(e){
+        var e = window.event;
+        if(e.keyCode == 192){
+            _self.toggleDisplayAside();
+        }
+    }
+  },
   components: {
     iHeader,
     iMain,
     iAside,
     iFooter
-  }
+  },
 }
 </script>
 

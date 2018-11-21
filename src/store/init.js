@@ -1,32 +1,17 @@
-const systemConfig = {
+export default {
 	namespaced: true,
 	state: {
-		cardsData: [{
-			title: 't1 2018-11-01',
-			details: 'This is fake details. (2018-11-01)'
-		},{
-			title: 't1 2018-11-02',
-			details: 'This is fake details. (2018-11-02)'
-		},{
-			title: 't1 2018-11-03',
-			details: 'This is fake details. (2018-11-03)'
-		}]
+		displayAside: false
 	},
 	mutations: {
-		INSERT_DATA: (state, { title, details }) => {
-			if (title && details) {
-				state.cardsData.push({
-					title, 
-					details
-				})
-			}
+		TOGGLE_DISPLAY_ASIDE: (state) => {
+			state.displayAside = !state.displayAside;
 		} 
 	},
 	actions: {
-		insertData({commit}, value) {
-			commit('INSERT_DATA',value);
+		toggleDisplayAside({commit}) {
+			console.log("triggered: toggleDisplayAside.")
+			commit('TOGGLE_DISPLAY_ASIDE');
 		}
 	}
 }
-
-export default systemConfig
