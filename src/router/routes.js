@@ -1,6 +1,4 @@
-import temp from '@/temp'
 import IContainer from '@/containers'
-
 
 // 导出路由
 export const routes = [
@@ -8,20 +6,20 @@ export const routes = [
     path: '/',
     name: 'IContainer',
     component: IContainer,
-    redirect: '/events',
+    redirect: '/event',
     children: [
       {
-        path: '/events',
+        path: '/event',
         name: '事件',
-        component: temp,
+        component: resolve => require(['@/views/event'], resolve)
       },{
         path: '/plan',
         name: '计划',
-        component: temp,
+        component: resolve => require(['@/views/plan'], resolve),
       },{
         path: '/setting',
         name: '设置',
-        component: temp,
+        component: resolve => require(['@/views/setting'], resolve),
       }
     ]
   }

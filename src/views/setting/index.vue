@@ -1,6 +1,6 @@
 <template>
   <div>
-    template...
+    /setting
   </div>
 </template>
 

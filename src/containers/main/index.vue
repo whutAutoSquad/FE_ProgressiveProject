@@ -40,7 +40,7 @@ export default {
 
 <style scoped>
 .main {
-    min-height: 300px;
+  min-height: 200px;
 }
 
 .i-card {

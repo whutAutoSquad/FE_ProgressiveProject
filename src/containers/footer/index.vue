@@ -1,5 +1,5 @@
 <template>
-  <section class="aside">
+  <section class="i-footer">
   	{{msg}}
   </section>
 </template>
@@ -8,12 +8,19 @@
 export default {
   data () {
     return {
-      msg: 'this is the aFooter.'
+      msg: 'Got some details here.'
     }
   }
 }
 </script>
 
 <style scoped>
+
+.i-footer {
+  height: 60px;
+  line-height: 60px;
+  border-top: 1px solid lightsteelblue;
+  text-align: center;
+}
 
 </style>

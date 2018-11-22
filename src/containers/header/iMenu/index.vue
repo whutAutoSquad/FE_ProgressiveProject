@@ -1,7 +1,7 @@
 <template>
   <section class="i-menu">
-    <el-menu :default-active="activeIndex" class="el-menu-no-bottom-border" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="/events">事件</el-menu-item>
+    <el-menu :default-active="activeIndex" class="el-menu-no-bottom-border" mode="horizontal" router >
+      <el-menu-item index="/event">事件</el-menu-item>
       <el-menu-item index="/plan">计划</el-menu-item>
       <el-menu-item index="/setting">设置</el-menu-item>
     </el-menu>
@@ -12,19 +12,27 @@
 export default {
   data() {
     return {
-      activeIndex: '/events'
+      activeIndex: '/event'
     };
   },
-  computed:{
-    // activeIndex: 
+  watch: {
+    // 当引入 el-menu 的 router 属性后,以下的 watch监测 就不需要了
+    // watch 方法用来监测 $route 的变化,以获取当前路由信息
+    // $route: function(to, from) {
+    //   console.log(" watch $route : ", to, from)
+    //   this.activeIndex = this.$route.path;
+    // }
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-      this.$router.push(key)
-    }
+    // 当引入 el-menu 的 router 属性后,以下的 handleSelect跳转 就不需要了
+    // 路由跳转处理
+    // handleSelect(key, keyPath) {
+    //   console.log(key, keyPath);
+    //   this.$router.push(key)
+    // }
   },
-  created(){
+  mounted() {
+    this.activeIndex = this.$route.matched[1].path;
   }
 }
 </script>
