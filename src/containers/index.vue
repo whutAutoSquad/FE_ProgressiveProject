@@ -14,7 +14,7 @@
       <el-container class='context-container'>
         <!-- main -->
         <el-main>
-          <i-main />
+          <!-- <i-main /> -->
           <router-view></router-view>
         </el-main>
 
