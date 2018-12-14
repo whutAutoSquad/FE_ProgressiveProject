@@ -54,7 +54,8 @@ export default {
   created(){
     console.log('container built.')
     var _self = this;
-    document.onkeydown = function(e){
+    document.onkeyup = function(e){
+      console.log('container document.onkeyup: e', e)
         var e = window.event;
         if(e.keyCode == 192){
             _self.toggleDisplayAside();
@@ -96,11 +97,6 @@ export default {
 .sub-container {
   margin-top: 70px;
   margin-bottom: 30px;
-}
-
-.sub-container .el-aside {
-  border-right: 1px solid lightsteelblue;
-  overflow: hidden;
 }
 
 </style>
