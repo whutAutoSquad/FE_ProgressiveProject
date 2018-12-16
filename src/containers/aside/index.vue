@@ -6,14 +6,14 @@
       </div>
       <div>
         <el-collapse class="help-collapse">
-          <el-collapse-item title="[`] 反引号" >
-            <div>切换 显示帮助框</div>
+          <el-collapse-item title="[a asider]" >
+            <div>切换 侧边栏</div>
           </el-collapse-item>
-          <el-collapse-item title="[a]" >
-            <div>打开 新增辅助框</div>
+          <el-collapse-item title="[f footer]" >
+            <div>打开 底部栏</div>
           </el-collapse-item>
-          <el-collapse-item title="[c]" >
-            <div>关闭 所有辅助框</div>
+          <el-collapse-item title="[h header]" >
+            <div>关闭 顶部栏</div>
           </el-collapse-item>
         </el-collapse>
       </div>
