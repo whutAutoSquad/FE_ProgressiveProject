@@ -13,7 +13,7 @@
             </el-tooltip>
           </div>
           <div>
-            <p>Date: {{ item.date }}</p>
+            <p>Date: {{ _moment(item.date).format('YYYY-MM-DD') }}</p>
             <p>Role: {{ item.role }}</p>
             <p>Locate: {{ item.locate }}</p>
             <p>Details: {{ item.details }}</p>

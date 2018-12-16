@@ -2,7 +2,8 @@ import Vue from 'vue'
 import router from '@/router/index'
 import axios from 'axios'
 import moment from 'moment'
-import { url } from  '@/utils/connectConfig.js'
+import echarts from 'echarts'
+import { url } from '@/utils/connectConfig.js'
 
 var chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
@@ -16,72 +17,73 @@ function generateMixed(n) {
 }
 export default {
   install(Vue, options) {
-  	/*
-  	* 此处用于配置Vue.config, 即Vue的全局配置
-  	* 详见 https://cn.vuejs.org/v2/api/#全局配置
-  	* 主要是配置一下按键
-  	* 默认键名有
-		*		.enter
-	  *		.tab
-	  *		.delete (捕获“删除”和“退格”键)
-	  *		.esc
-	  *		.space
-	  *		.up
-	  *		.down
-	  *		.left
-	  *		.right
-	  * 注意!!!
-	  *	camelCase 不可用
-	  *	mediaPlayPause: 179, // 此设置无效
-	  *	取而代之的是 kebab-case 且用双引号括起来
-	  *	"media-play-pause": 179, //采用此设置
-  	*/
-  	Vue.config.keyCodes = {
-  		a:	65,
-  		b:	66,
-  		c:	67,
-  		d:	68,
-  		e:	69,
-  		f:	70,
-  		g:	71,
-  		h:	72,
-  		i:	73,
-  		j:	74,
-  		k:	75,
-  		l:	76,
-  		m:	77,
-  		n:	78,
-  		o:	79,
-  		p:	80,
-  		q:	81,
-  		r:	82,
-  		s:	83,
-  		t:	84,
-  		u:	85,
-  		v:	86,
-  		w:	87,
-  		x:	88,
-  		y:	89,
-  		z:	90,
-  		num_0:	48,
-  		num_1:	49,
-  		num_2:	50,
-  		num_3:	51,
-  		num_4:	52,
-  		num_5:	53,
-  		num_6:	54,
-  		num_7:	55,
-  		num_8:	56,
-  		num_9:	57,
-  	}
+    /*
+     * 此处用于配置Vue.config, 即Vue的全局配置
+     * 详见 https://cn.vuejs.org/v2/api/#全局配置
+     * 主要是配置一下按键
+     * 默认键名有
+     *    .enter
+     *    .tab
+     *    .delete (捕获“删除”和“退格”键)
+     *    .esc
+     *    .space
+     *    .up
+     *    .down
+     *    .left
+     *    .right
+     * 注意!!!
+     *  camelCase 不可用
+     *  mediaPlayPause: 179, // 此设置无效
+     *  取而代之的是 kebab-case 且用双引号括起来
+     *  "media-play-pause": 179, //采用此设置
+     */
+    Vue.config.keyCodes = {
+      a: 65,
+      b: 66,
+      c: 67,
+      d: 68,
+      e: 69,
+      f: 70,
+      g: 71,
+      h: 72,
+      i: 73,
+      j: 74,
+      k: 75,
+      l: 76,
+      m: 77,
+      n: 78,
+      o: 79,
+      p: 80,
+      q: 81,
+      r: 82,
+      s: 83,
+      t: 84,
+      u: 85,
+      v: 86,
+      w: 87,
+      x: 88,
+      y: 89,
+      z: 90,
+      num_0: 48,
+      num_1: 49,
+      num_2: 50,
+      num_3: 51,
+      num_4: 52,
+      num_5: 53,
+      num_6: 54,
+      num_7: 55,
+      num_8: 56,
+      num_9: 57,
+    }
 
-  	/*
-  	* 将所需的常用工具绑定到Vue实例上,以便于进行随时引用
-  	*	所有原始包的直接引入,绑定前缀为下划线 _
-  	* 自定义的方法属性,绑定前缀为$
-  	*/
-    Vue.prototype._axios = axios; //axios全局方法
-    Vue.prototype._moment = moment; //moment全局方法
+    /*
+     * 将所需的常用工具绑定到Vue实例上,以便于进行随时引用
+     *  所有原始包的直接引入,绑定前缀为下划线 _
+     * 自定义的方法属性,绑定前缀为$
+     */
+    Vue.prototype._axios = axios; //axios 全局方法
+    Vue.prototype._moment = moment; //moment 全局方法
+    Vue.prototype._echarts = echarts ;//echarts 全局方法
 
     Vue.prototype.$url = url; //url全局配置
 

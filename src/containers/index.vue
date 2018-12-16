@@ -1,38 +1,30 @@
 <template>
   <el-container class='main-container'>
     <!-- header -->
-    <el-header>
+    <el-header v-show="displayHeader">
       <i-header />
     </el-header>
-
     <el-container class='sub-container'>
       <!-- aside -->
-      <el-aside width="auto" v-bind:style="{ display: displayAside ? 'block' : 'none' }" >
+      <el-aside width="auto" v-if="displayAsider">
         <i-aside />
       </el-aside>
-
       <el-container class='context-container'>
         <!-- main -->
         <el-main>
-          <!-- <i-main /> -->
           <router-view></router-view>
         </el-main>
-
         <!-- footer -->
-        <el-footer>
+        <el-footer :style="{display: displayFooter ? 'block' : 'none'}">
           <i-footer />
         </el-footer>
       </el-container>
-
     </el-container>
-
   </el-container>
 </template>
-
 <script>
 import iHeader from './header'
 import iAside from './aside'
-import iMain from './main'
 import iFooter from './footer'
 
 // 引入 vuex
@@ -43,34 +35,46 @@ export default {
   name: 'container',
   computed: {
     ...mapState({
-      displayAside: state => state.displayAside
+      displayAsider: state => state.displayAsider,
+      displayHeader: state => state.displayHeader,
+      displayFooter: state => state.displayFooter,
     })
   },
   methods: {
     ...mapActions([
-      'toggleDisplayAside'
+      'toggleDisplayAsider',
+      'toggleDisplayHeader',
+      'toggleDisplayFooter',
     ])
   },
-  created(){
-    console.log('container built.')
+  created() {
     var _self = this;
-    document.onkeyup = function(e){
-      console.log('container document.onkeyup: e', e)
-        var e = window.event;
-        if(e.keyCode == 192){
-            _self.toggleDisplayAside();
-        }
+    document.onkeyup = function(e) {
+      var e = window.event;
+      switch (e.keyCode) {
+        case 65:
+          // a
+          _self.toggleDisplayAsider();
+          break;
+        case 70:
+          // f
+          _self.toggleDisplayFooter();
+          break;
+        case 72:
+          // h
+          _self.toggleDisplayHeader();
+          break;
+      }
     }
   },
   components: {
     iHeader,
-    iMain,
     iAside,
     iFooter
   },
 }
-</script>
 
+</script>
 <style scoped>
 .main-container {
   overflow-y: hidden;
@@ -84,7 +88,7 @@ export default {
   border-bottom-right-radius: 40px;
 
   /* 固定在顶部 part 1/2 */
-  position: fixed;
+  /*position: fixed;*/
   height: 60px;
   width: 100%;
   left: 0;
@@ -95,7 +99,7 @@ export default {
 }
 
 .sub-container {
-  margin-top: 70px;
+  margin-top: 10px;
   margin-bottom: 30px;
 }
 

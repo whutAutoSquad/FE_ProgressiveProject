@@ -17,6 +17,10 @@ export const routes = [
         name: '计划',
         component: resolve => require(['@/views/plan'], resolve),
       },{
+        path: '/geo',
+        name: '地图',
+        component: resolve => require(['@/views/geo'], resolve),
+      },{
         path: '/setting',
         name: '设置',
         component: resolve => require(['@/views/setting'], resolve),
