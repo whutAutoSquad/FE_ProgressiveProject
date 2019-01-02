@@ -4,20 +4,19 @@
     <el-button @click="dialogVisibleAdd = true">添加</el-button>
     <el-row :gutter="20">
       <!-- 这里的 v-for 只能放在 el-col 标签上. 如果放在其子标签上,标识只有一列,一个数据,然后所有数据往这一列里边填充 -->
-      <el-col :span="12" v-for="item in tableData" :key="item._id">
+      <el-col :span="24" v-for="item in tableData" :key="item._id">
         <el-card shadow="always" class="i-card">
           <div slot="header">
-            <span>_id: {{ item._id }}</span>
+            <span class="card-title-date">{{ _moment(item.date).format('YYYY-MM-DD') }}</span>
+            <span class="card-title-locate"><i class="el-icon-location"></i> {{ item.locate }}</span>
+            <span class="card-title-role"><i class="el-icon-caret-right"></i> {{ item.role }}</span>
+            <span class="card-title-keys"><i class="el-icon-info"></i> {{ item.keys.join(' ') }}</span>
             <el-tooltip content="删除此条目" placement="top">
               <i class="el-icon-delete operateBtn" @click="deleteItem(item._id)"></i>
             </el-tooltip>
           </div>
           <div>
-            <p>Date: {{ _moment(item.date).format('YYYY-MM-DD') }}</p>
-            <p>Role: {{ item.role }}</p>
-            <p>Locate: {{ item.locate }}</p>
-            <p>Details: {{ item.details }}</p>
-            <p>Keys: {{ item.keys.join(' ') }}</p>
+            {{ item.details }}
           </div>
         </el-card>
       </el-col>
@@ -188,6 +187,22 @@ export default {
   float: right;
   padding: 3px 0;
   cursor: pointer;
+}
+
+.i-card .card-title-date {
+  font-size: 20px;
+}
+.i-card .card-title-role {
+  font-size: 15px;
+  margin-left: 5%;
+}
+.i-card .card-title-locate {
+  font-size: 15px;
+  margin-left: 5%;
+}
+.i-card .card-title-keys {
+  font-size: 15px;
+  margin-left: 5%;
 }
 
 </style>
