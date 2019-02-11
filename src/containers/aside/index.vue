@@ -6,14 +6,14 @@
       </div>
       <div>
         <el-collapse class="help-collapse">
-          <el-collapse-item title="[a asider]" >
+          <el-collapse-item title="[A Asider]" >
             <div>切换 侧边栏</div>
           </el-collapse-item>
-          <el-collapse-item title="[f footer]" >
-            <div>打开 底部栏</div>
+          <el-collapse-item title="[F Footer]" >
+            <div>切换 底部栏</div>
           </el-collapse-item>
-          <el-collapse-item title="[h header]" >
-            <div>关闭 顶部栏</div>
+          <el-collapse-item title="[H Header]" >
+            <div>切换 顶部栏</div>
           </el-collapse-item>
         </el-collapse>
       </div>
